@@ -1,3 +1,5 @@
+require './entries.rb'
+
 class EasyMode
   def create_tic_tac_toe_matrix
     first_row = ["*","*","*"]
@@ -24,39 +26,15 @@ class EasyMode
   def is_empty? row, column
     return true if @game[row][column] == "*"
     return false
-  end
-
-  def aks_for_a_row
-    puts 'Please, choose a row'
-    row = gets.chomp.to_i
-
-    while row < 1 || row > 3
-      puts 'please choose a valid row'
-      row = gets.chomp.to_i
-    end 
-
-    return row
-  end
-
-  def ask_for_a_column
-    puts 'Please, choose a column'
-    column = gets.chomp.to_i
-
-    while column < 1 || column > 3
-      puts 'please choose a valid column'
-      column = gets.chomp.to_i
-    end 
-
-    return column
-  end
+  end  
 
   def human_turn 
     is_a_valid_play = false
 
     while !is_a_valid_play do
-      row = aks_for_a_row
+      row = Entries.aks_for_a_row
 
-      column = ask_for_a_column
+      column = Entries.ask_for_a_column
 
       row -= 1
       column -= 1
@@ -88,12 +66,8 @@ class EasyMode
     return "machine"
   end
 
-  def valid_positions first_position, second_position, third_position
-    return first_position != "*" && second_position != "*" && third_position != "*"
-  end
-
   def line_is_complete? first_position, second_position, third_position
-    if first_position == second_position && first_position == third_position && (valid_positions first_position, second_position, third_position)
+    if first_position == second_position && first_position == third_position && first_position != "*" && second_position != "*" && third_position != "*"
       return true 
     end
 
@@ -157,33 +131,7 @@ class EasyMode
     return false 
   end
 
-  def main
-    @game = create_tic_tac_toe_matrix
-
-    @player_turn = raffle_player
-
-    puts "The numbers '1s' are you choices and the '0s' are Machine choices"
-
-    game_status
-
-    @turn_numbers = 0
-
-    while true
-      human_turn if @player_turn == "human"
-
-      machine_turn if @player_turn == "machine"
-
-      @player_turn = other_player 
-
-      game_status 
-
-      @turn_numbers += 1
-
-      if is_over? 
-        puts result 
-        break
-      end
-    end
-  end
+  
+  
 end
 
