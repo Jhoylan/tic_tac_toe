@@ -123,14 +123,14 @@ end
 def result game
   winner = -1
     
-  winner = game[0][0] if is_fulfilled? "first_row", game
-  winner = game[1][0] if is_fulfilled? "second_row", game
-  winner = game[2][0] if is_fulfilled? "third_row", game 
-  winner = game[0][0] if is_fulfilled? "first_column", game 
-  winner = game[0][1] if is_fulfilled? "second_column", game 
-  winner = game[0][2] if is_fulfilled? "third_column", game 
-  winner = game[0][0] if is_fulfilled? "main_diagonal", game 
-  winner = game[2][0] if is_fulfilled? "secondary_diagonal", game 
+  winner = game[0][0] if @first_row_is_fulfilled
+  winner = game[1][0] if @second_row_is_fulfilled
+  winner = game[2][0] if @third_row_is_fulfilled
+  winner = game[0][0] if @first_column_is_fulfilled
+  winner = game[0][1] if @second_column_is_fulfilled
+  winner = game[0][2] if @third_column_is_fulfilled
+  winner = game[0][0] if @main_diagonal_is_fulfilled
+  winner = game[2][0] if @secundary_diagonal_is_fulfilled 
 
   return "The winner is the Machine" if winner == 0
   return "The winner is you" if winner == 1
@@ -138,18 +138,18 @@ def result game
 end
 
 def is_over? game, turn_numbers
-  first_row_is_fulfilled =          is_fulfilled? "first_row", game 
-  second_row_is_fulfilled =         is_fulfilled? "second_row", game 
-  third_row_is_fulfilled =          is_fulfilled? "third_row", game 
-  first_column_is_fulfilled =       is_fulfilled? "first_column", game 
-  second_column_is_fulfilled =      is_fulfilled? "second_column", game 
-  third_column_is_fulfilled =       is_fulfilled? "third_column", game 
-  main_diagonal_is_fulfilled =      is_fulfilled? "main_diagonal", game 
-  secundary_diagonal_is_fulfilled = is_fulfilled? "secondary_diagonal", game 
+  @first_row_is_fulfilled =          is_fulfilled? "first_row", game 
+  @second_row_is_fulfilled =         is_fulfilled? "second_row", game 
+  @third_row_is_fulfilled =          is_fulfilled? "third_row", game 
+  @first_column_is_fulfilled =       is_fulfilled? "first_column", game 
+  @second_column_is_fulfilled =      is_fulfilled? "second_column", game 
+  @third_column_is_fulfilled =       is_fulfilled? "third_column", game 
+  @main_diagonal_is_fulfilled =      is_fulfilled? "main_diagonal", game 
+  @secundary_diagonal_is_fulfilled = is_fulfilled? "secondary_diagonal", game 
 
-  any_row_is_fulfilled =      first_row_is_fulfilled || second_row_is_fulfilled || third_row_is_fulfilled
-  any_column_is_fulfilled =   first_column_is_fulfilled || second_column_is_fulfilled || third_column_is_fulfilled 
-  any_diagonal_is_fulfilled = main_diagonal_is_fulfilled || secundary_diagonal_is_fulfilled
+  any_row_is_fulfilled =      @first_row_is_fulfilled || @second_row_is_fulfilled || @third_row_is_fulfilled
+  any_column_is_fulfilled =   @first_column_is_fulfilled || @second_column_is_fulfilled || @third_column_is_fulfilled 
+  any_diagonal_is_fulfilled = @main_diagonal_is_fulfilled || @secundary_diagonal_is_fulfilled
   no_more_empty_spaces =      turn_numbers == 9 
 
   return true if any_row_is_fulfilled || any_column_is_fulfilled || any_diagonal_is_fulfilled || no_more_empty_spaces
