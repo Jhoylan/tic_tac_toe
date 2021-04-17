@@ -1,0 +1,6 @@
+require './helpers/display.rb'
+require './helpers/entries.rb'
+require './helpers/new_game.rb'
+require './helpers/player_manipulation.rb'
+require './helpers/result.rb'
+require './helpers/verifications.rb'

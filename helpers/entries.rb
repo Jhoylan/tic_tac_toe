@@ -1,5 +1,5 @@
-class Entries
-  def Entries.aks_for_a_row
+class Entry
+  def self.aks_for_a_row
     puts 'Please, choose a row'
     row = gets.chomp.to_i
 
@@ -11,7 +11,7 @@ class Entries
     return row
   end
 
-  def Entries.ask_for_a_column
+  def self.ask_for_a_column
     puts 'Please, choose a column'
     column = gets.chomp.to_i
 
