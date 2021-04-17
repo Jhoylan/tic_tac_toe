@@ -13,15 +13,15 @@ def raffle_player
   return "machine" if player == 0
 end
 
-def game_status game
-  puts "#{game[0][0]}  #{game[0][1]}  #{game[0][2]}"
-  puts "#{game[1][0]}  #{game[1][1]}  #{game[1][2]}"
-  puts "#{game[2][0]}  #{game[2][1]}  #{game[2][2]}"
+def game_status 
+  puts "#{@game[0][0]}  #{@game[0][1]}  #{@game[0][2]}"
+  puts "#{@game[1][0]}  #{@game[1][1]}  #{@game[1][2]}"
+  puts "#{@game[2][0]}  #{@game[2][1]}  #{@game[2][2]}"
   puts ""
 end
 
-def is_empty? game, row, column
-  return true if game[row][column] == "*"
+def is_empty? row, column
+  return true if @game[row][column] == "*"
   return false
 end
 
@@ -49,7 +49,7 @@ def ask_for_a_column
   return column
 end
 
-def human_turn game
+def human_turn 
   is_a_valid_play = false
 
   while !is_a_valid_play do
@@ -60,15 +60,15 @@ def human_turn game
     row -= 1
     column -= 1
 
-    is_a_valid_play = is_empty? game, row, column
+    is_a_valid_play = is_empty? row, column
   end
 
-  game[row][column] = 1
+  @game[row][column] = 1
 
   puts "You play"
 end
 
-def machine_turn game
+def machine_turn 
   puts "Machine play"
 
   is_a_valid_play = false
@@ -76,10 +76,10 @@ def machine_turn game
   while !is_a_valid_play do
     row = rand(0..2)
     column = rand(0..2)
-    is_a_valid_play = is_empty? game, row, column
+    is_a_valid_play = is_empty? row, column
   end
 
-  game[row][column] = 0
+  @game[row][column] = 0
 end
 
 def change_player player_turn
@@ -99,53 +99,53 @@ def line_is_complete first_position, second_position, third_position
   return false
 end
 
-def is_fulfilled? line, game
+def is_fulfilled? line
   case line
   when "first_row"
-    return line_is_complete game[0][0], game[0][1], game[0][2]
+    return line_is_complete @game[0][0], @game[0][1], @game[0][2]
   when "second_row"
-    return line_is_complete game[1][0], game[1][1], game[1][2]
+    return line_is_complete @game[1][0], @game[1][1], @game[1][2]
   when "third_row"
-    return line_is_complete game[2][0], game[2][1], game[2][2]
+    return line_is_complete @game[2][0], @game[2][1], @game[2][2]
   when "first_column"
-    return line_is_complete game[0][0], game[1][0], game[2][0]    
+    return line_is_complete @game[0][0], @game[1][0], @game[2][0]    
   when "second_column"
-    return line_is_complete game[0][1], game[1][1], game[2][1] 
+    return line_is_complete @game[0][1], @game[1][1], @game[2][1] 
   when "third_column"
-    return line_is_complete game[0][2], game[1][2], game[2][2]
+    return line_is_complete @game[0][2], @game[1][2], @game[2][2]
   when "main_diagonal"
-    return line_is_complete game[0][0], game[1][1], game[2][2]
+    return line_is_complete @game[0][0], @game[1][1], @game[2][2]
   when "secondary_diagonal"
-    return line_is_complete game[2][0], game[1][1], game[0][2]    
+    return line_is_complete @game[2][0], @game[1][1], @game[0][2]    
   end
 end
 
-def result game
+def result 
   winner = -1
     
-  winner = game[0][0] if @first_row_is_fulfilled
-  winner = game[1][0] if @second_row_is_fulfilled
-  winner = game[2][0] if @third_row_is_fulfilled
-  winner = game[0][0] if @first_column_is_fulfilled
-  winner = game[0][1] if @second_column_is_fulfilled
-  winner = game[0][2] if @third_column_is_fulfilled
-  winner = game[0][0] if @main_diagonal_is_fulfilled
-  winner = game[2][0] if @secundary_diagonal_is_fulfilled 
+  winner = @game[0][0] if @first_row_is_fulfilled
+  winner = @game[1][0] if @second_row_is_fulfilled
+  winner = @game[2][0] if @third_row_is_fulfilled
+  winner = @game[0][0] if @first_column_is_fulfilled
+  winner = @game[0][1] if @second_column_is_fulfilled
+  winner = @game[0][2] if @third_column_is_fulfilled
+  winner = @game[0][0] if @main_diagonal_is_fulfilled
+  winner = @game[2][0] if @secundary_diagonal_is_fulfilled 
 
   return "The winner is the Machine" if winner == 0
   return "The winner is you" if winner == 1
   return "It's a draw"
 end
 
-def is_over? game, turn_numbers
-  @first_row_is_fulfilled =          is_fulfilled? "first_row", game 
-  @second_row_is_fulfilled =         is_fulfilled? "second_row", game 
-  @third_row_is_fulfilled =          is_fulfilled? "third_row", game 
-  @first_column_is_fulfilled =       is_fulfilled? "first_column", game 
-  @second_column_is_fulfilled =      is_fulfilled? "second_column", game 
-  @third_column_is_fulfilled =       is_fulfilled? "third_column", game 
-  @main_diagonal_is_fulfilled =      is_fulfilled? "main_diagonal", game 
-  @secundary_diagonal_is_fulfilled = is_fulfilled? "secondary_diagonal", game 
+def is_over? turn_numbers
+  @first_row_is_fulfilled =          is_fulfilled? "first_row"
+  @second_row_is_fulfilled =         is_fulfilled? "second_row"
+  @third_row_is_fulfilled =          is_fulfilled? "third_row"
+  @first_column_is_fulfilled =       is_fulfilled? "first_column"
+  @second_column_is_fulfilled =      is_fulfilled? "second_column"
+  @third_column_is_fulfilled =       is_fulfilled? "third_column"
+  @main_diagonal_is_fulfilled =      is_fulfilled? "main_diagonal"
+  @secundary_diagonal_is_fulfilled = is_fulfilled? "secondary_diagonal"
 
   any_row_is_fulfilled =      @first_row_is_fulfilled || @second_row_is_fulfilled || @third_row_is_fulfilled
   any_column_is_fulfilled =   @first_column_is_fulfilled || @second_column_is_fulfilled || @third_column_is_fulfilled 
@@ -157,29 +157,29 @@ def is_over? game, turn_numbers
 end
 
 def main
-  game = create_tic_tac_toe_matrix
+  @game = create_tic_tac_toe_matrix
 
   player_turn = raffle_player
 
   puts "The numbers '1s' are you choices and the '0s' are Machine choices"
 
-  game_status game
+  game_status
 
   turn_numbers = 0
 
   while true
-    human_turn game  if player_turn == "human"
+    human_turn if player_turn == "human"
 
-    machine_turn game  if player_turn == "machine"
+    machine_turn if player_turn == "machine"
 
     player_turn = change_player player_turn
 
-    game_status game
+    game_status 
 
     turn_numbers += 1
 
-    if is_over? game, turn_numbers
-      puts result game
+    if is_over? turn_numbers
+      puts result 
       break
     end
   end
