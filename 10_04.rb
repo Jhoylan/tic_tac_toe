@@ -82,8 +82,8 @@ def machine_turn
   @game[row][column] = 0
 end
 
-def change_player player_turn
-  return "human" if player_turn == "machine"
+def other_player 
+  return "human" if @player_turn == "machine"
   return "machine"
 end
 
@@ -159,7 +159,7 @@ end
 def main
   @game = create_tic_tac_toe_matrix
 
-  player_turn = raffle_player
+  @player_turn = raffle_player
 
   puts "The numbers '1s' are you choices and the '0s' are Machine choices"
 
@@ -168,11 +168,11 @@ def main
   @turn_numbers = 0
 
   while true
-    human_turn if player_turn == "human"
+    human_turn if @player_turn == "human"
 
-    machine_turn if player_turn == "machine"
+    machine_turn if @player_turn == "machine"
 
-    player_turn = change_player player_turn
+    @player_turn = other_player 
 
     game_status 
 
