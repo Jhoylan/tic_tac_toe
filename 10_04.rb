@@ -147,10 +147,10 @@ def is_over? game, turn_numbers
   main_diagonal_is_fulfilled =      is_fulfilled? "main_diagonal", game 
   secundary_diagonal_is_fulfilled = is_fulfilled? "secondary_diagonal", game 
 
-  any_row_is_fulfilled = first_row_is_fulfilled || second_row_is_fulfilled || third_row_is_fulfilled
-  any_column_is_fulfilled = first_column_is_fulfilled || second_column_is_fulfilled || third_column_is_fulfilled 
+  any_row_is_fulfilled =      first_row_is_fulfilled || second_row_is_fulfilled || third_row_is_fulfilled
+  any_column_is_fulfilled =   first_column_is_fulfilled || second_column_is_fulfilled || third_column_is_fulfilled 
   any_diagonal_is_fulfilled = main_diagonal_is_fulfilled || secundary_diagonal_is_fulfilled
-  no_more_empty_spaces = turn_numbers == 9 
+  no_more_empty_spaces =      turn_numbers == 9 
 
   return true  if any_row_is_fulfilled || any_column_is_fulfilled || any_diagonal_is_fulfilled || no_more_empty_spaces
   return false 
