@@ -91,7 +91,7 @@ def valid_positions first_position, second_position, third_position
   return first_position != "*" && second_position != "*" && third_position != "*"
 end
 
-def line_is_complete first_position, second_position, third_position
+def line_is_complete? first_position, second_position, third_position
   if first_position == second_position && first_position == third_position && (valid_positions first_position, second_position, third_position)
     return true 
   end
@@ -102,21 +102,21 @@ end
 def is_fulfilled? line
   case line
   when "first_row"
-    return line_is_complete @game[0][0], @game[0][1], @game[0][2]
+    return line_is_complete? @game[0][0], @game[0][1], @game[0][2]
   when "second_row"
-    return line_is_complete @game[1][0], @game[1][1], @game[1][2]
+    return line_is_complete? @game[1][0], @game[1][1], @game[1][2]
   when "third_row"
-    return line_is_complete @game[2][0], @game[2][1], @game[2][2]
+    return line_is_complete? @game[2][0], @game[2][1], @game[2][2]
   when "first_column"
-    return line_is_complete @game[0][0], @game[1][0], @game[2][0]    
+    return line_is_complete? @game[0][0], @game[1][0], @game[2][0]    
   when "second_column"
-    return line_is_complete @game[0][1], @game[1][1], @game[2][1] 
+    return line_is_complete? @game[0][1], @game[1][1], @game[2][1] 
   when "third_column"
-    return line_is_complete @game[0][2], @game[1][2], @game[2][2]
+    return line_is_complete? @game[0][2], @game[1][2], @game[2][2]
   when "main_diagonal"
-    return line_is_complete @game[0][0], @game[1][1], @game[2][2]
+    return line_is_complete? @game[0][0], @game[1][1], @game[2][2]
   when "secondary_diagonal"
-    return line_is_complete @game[2][0], @game[1][1], @game[0][2]    
+    return line_is_complete? @game[2][0], @game[1][1], @game[0][2]    
   end
 end
 
