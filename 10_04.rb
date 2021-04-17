@@ -152,7 +152,7 @@ def is_over? game, turn_numbers
   any_diagonal_is_fulfilled = main_diagonal_is_fulfilled || secundary_diagonal_is_fulfilled
   no_more_empty_spaces =      turn_numbers == 9 
 
-  return true  if any_row_is_fulfilled || any_column_is_fulfilled || any_diagonal_is_fulfilled || no_more_empty_spaces
+  return true if any_row_is_fulfilled || any_column_is_fulfilled || any_diagonal_is_fulfilled || no_more_empty_spaces
   return false 
 end
 
@@ -168,9 +168,9 @@ def main
   turn_numbers = 0
 
   while true
-    human_turn(game) if player_turn == "human"
+    human_turn game  if player_turn == "human"
 
-    machine_turn(game) if player_turn == "machine"
+    machine_turn game  if player_turn == "machine"
 
     player_turn = change_player player_turn
 
