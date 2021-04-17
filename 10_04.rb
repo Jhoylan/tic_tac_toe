@@ -122,8 +122,7 @@ end
 
 def result game
   winner = -1
-  its_a_draw = true
-  
+    
   winner = game[0][0] if is_fulfilled? "first_row", game
   winner = game[1][0] if is_fulfilled? "second_row", game
   winner = game[2][0] if is_fulfilled? "third_row", game 
