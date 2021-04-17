@@ -1,5 +1,5 @@
 require './helpers/all_helpers.rb'
-require './levels/level1.rb'
+require './levels/all_levels.rb'
 
 class Main 
   def main
@@ -35,6 +35,10 @@ class Main
   def machine_turn level
     case level
     when 1
+      Level1.machine_turn @game 
+    when 2
+      Level2.machine_turn @game 
+    else
       Level1.machine_turn @game 
     end
   end
