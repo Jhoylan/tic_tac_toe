@@ -137,7 +137,7 @@ def result
   return "It's a draw"
 end
 
-def is_over? turn_numbers
+def is_over? 
   @first_row_is_fulfilled =          is_fulfilled? "first_row"
   @second_row_is_fulfilled =         is_fulfilled? "second_row"
   @third_row_is_fulfilled =          is_fulfilled? "third_row"
@@ -150,7 +150,7 @@ def is_over? turn_numbers
   any_row_is_fulfilled =      @first_row_is_fulfilled || @second_row_is_fulfilled || @third_row_is_fulfilled
   any_column_is_fulfilled =   @first_column_is_fulfilled || @second_column_is_fulfilled || @third_column_is_fulfilled 
   any_diagonal_is_fulfilled = @main_diagonal_is_fulfilled || @secundary_diagonal_is_fulfilled
-  no_more_empty_spaces =      turn_numbers == 9 
+  no_more_empty_spaces =      @turn_numbers == 9 
 
   return true if any_row_is_fulfilled || any_column_is_fulfilled || any_diagonal_is_fulfilled || no_more_empty_spaces
   return false 
@@ -165,7 +165,7 @@ def main
 
   game_status
 
-  turn_numbers = 0
+  @turn_numbers = 0
 
   while true
     human_turn if player_turn == "human"
@@ -176,9 +176,9 @@ def main
 
     game_status 
 
-    turn_numbers += 1
+    @turn_numbers += 1
 
-    if is_over? turn_numbers
+    if is_over? 
       puts result 
       break
     end
