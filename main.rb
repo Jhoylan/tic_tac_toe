@@ -41,6 +41,8 @@ class Main
       Level2.machine_turn @game 
     when 3
       Level3.machine_turn @game, turn
+    when 4
+      Level4.machine_turn @game, turn
     else
       Level1.machine_turn @game
     end
