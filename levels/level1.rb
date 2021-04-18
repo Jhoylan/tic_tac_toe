@@ -1,5 +1,5 @@
 class Level1
-  def self.machine_turn game
+  def self.machine_turn game, *turn
     puts "Machine play"
 
     is_a_valid_play = false

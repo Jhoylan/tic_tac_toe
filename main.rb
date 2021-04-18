@@ -13,33 +13,36 @@ class Main
 
     Display.game_status @game
 
-    @turn_numbers = 0
+    @turn = 0
 
     while true
       Play.human_turn @game if @current_player == "human"
-      machine_turn @level if @current_player == "machine"
+
+      machine_turn @level, @turn if @current_player == "machine"
 
       @current_player = PlayerManipulation.other_player @current_player
 
       Display.game_status @game
 
-      @turn_numbers += 1
+      @turn += 1
 
-      if CheckingIf.is_over? @game, @turn_numbers
+      if CheckingIf.is_over? @game, @turn
         puts Result.show @game
         break
       end
     end
   end 
 
-  def machine_turn level
+  def machine_turn level, turn
     case level
     when 1
       Level1.machine_turn @game 
     when 2
       Level2.machine_turn @game 
+    when 3
+      Level3.machine_turn @game, turn
     else
-      Level1.machine_turn @game 
+      Level1.machine_turn @game
     end
   end
 end

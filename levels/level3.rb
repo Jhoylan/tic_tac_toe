@@ -1,8 +1,12 @@
-require './defenses/deadly_threats.rb'
+require './defenses/medium_traps.rb'
 
-class Level2
-  def self.machine_turn game, *turn
-    puts "Machine play"
+class Level3
+  def self.machine_turn game, turn
+    puts "Machine level 3 plays"
+
+    if turn == 1
+      return if MediumDefense.avoid_first_level_traps game
+    end
 
     return if BasicDefense.avoid_deadly_threat game
 
