@@ -4,7 +4,9 @@ class Level2
   def self.machine_turn game
     puts "Machine play"
 
-    return if Defense.avoid_deadly_threat game
+    return if BasicDefense.avoid_deadly_threat game
+
+    puts 'random choice'
 
     is_a_valid_play = false
 
