@@ -18,19 +18,19 @@ class Conner
   private
   def self.is_possible? game 
     if game[0][0] == 0
-      return true if game[0][2] == 1 || game[2][0] == 1 
+      return true if game[0][2] == 1 || game[2][0] == 1 || game[2][2]
     end
 
     if game[2][0] == 0
-      return true if game[0][0] == 1 || game[2][2] == 1 
+      return true if game[0][0] == 1 || game[2][2] == 1 || game[0][2] 
     end
 
     if game[0][2] == 0
-      return true if game[0][0] == 1 || game[2][2] == 1 
+      return true if game[0][0] == 1 || game[2][2] == 1 || game[2][0] 
     end
 
     if game[2][2] == 0
-      return true if game[2][0] == 1 || game[0][2] == 1 
+      return true if game[2][0] == 1 || game[0][2] == 1 || game[2][2] 
     end  
 
     return false
@@ -47,6 +47,18 @@ class Conner
         game[2][0] = 0
         return
       end
+
+      if game[0][0] == 1
+        position = rand(2)
+
+        if position == 0
+          game[2][0] = 0
+          return
+        end
+
+        game[0][2] = 0
+        return
+      end
     end  
     
     if game[0][2] == 0
@@ -57,6 +69,18 @@ class Conner
 
       if game[0][0] == 1
         game[2][2] = 0
+        return
+      end
+
+      if game[2][0] == 1
+        position = rand(2)
+
+        if position == 0
+          game[2][2] = 0
+          return
+        end
+
+        game[0][0] = 0
         return
       end
     end
@@ -71,6 +95,18 @@ class Conner
         game[0][2] = 0
         return
       end
+
+      if game[2][2] == 1
+        position = rand(2)
+
+        if position == 0
+          game[0][2] = 0
+          return
+        end
+
+        game[2][0] = 0
+        return
+      end
     end
 
     if game[2][0] == 0
@@ -81,6 +117,18 @@ class Conner
 
       if game[0][0] == 1
         game[2][2] = 0
+        return
+      end
+
+      if game[0][2] == 1
+        position = rand(2)
+
+        if position == 0
+          game[2][2] = 0
+          return
+        end
+
+        game[0][0] = 0
         return
       end
     end
