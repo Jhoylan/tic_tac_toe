@@ -37,19 +37,34 @@ class BasicDefense
   end
 
   def self.avoid_diagonal_deadly_threat game
-    main_daiagonal = [game[0][0], game[1][1], game[2][2]]
-    secundary_daiagonal = [game[2][0], game[1][1], game[0][2]]
-    diagonals = [main_daiagonal, secundary_daiagonal]
+    return true if main_daiagonal_deadly_threat game
+    return true if secundary_daiagonal_deadly_threat game
+  end
 
-    diagonals.each do |diagonal|
-      if (diagonal.count 1) == 2 && (diagonal.count 0) == 0
-        game[0][0] = 0 if diagonal[0] == "*"
-        game[1][1] = 0 if diagonal[1] == "*"
-        game[2][2] = 0 if diagonal[2] == "*"
-        
-        return true
-      end
-    end   
+  def self.main_daiagonal_deadly_threat game
+    main_daiagonal = [game[0][0], game[1][1], game[2][2]]  
+    
+    if (main_daiagonal.count 1) == 2 && (main_daiagonal.count 0) == 0
+      game[0][0] = 0 if main_daiagonal[0] == "*"
+      game[1][1] = 0 if main_daiagonal[1] == "*"
+      game[2][2] = 0 if main_daiagonal[2] == "*"
+      
+      return true
+    end  
+    
+    return false
+  end
+
+  def self.secundary_daiagonal_deadly_threat game
+    secundary_daiagonal = [game[2][0], game[1][1], game[0][2]]  
+    
+    if (secundary_daiagonal.count 1) == 2 && (secundary_daiagonal.count 0) == 0
+      game[2][0] = 0 if secundary_daiagonal[0] == "*"
+      game[1][1] = 0 if secundary_daiagonal[1] == "*"
+      game[0][2] = 0 if secundary_daiagonal[2] == "*"
+      
+      return true
+    end    
 
     return false
   end
