@@ -5,10 +5,11 @@
 
 <h2>How to play?</h2>
 <h4>
-  Play this game is very simple, just download the project and the run <code>ruby main.rb</code> in your terminal in the project directory.</br>
+  <p>Play this game is very simple, just download the project and the run <code>ruby main.rb</code> in your terminal in the project directory.</p>
 
-  To have the complete experience that this game could offer to you, I personally recommend that you play all the levels both starting the game and let Joe play first. </br>
-  This will allow his abilities off attack and defense appears.
+  <p>To have the complete experience that this game could offer to you, I personally recommend that you play all the levels both starting the game and let Joe play first. </p>
+
+  <p>This will allow his abilities off attack and defense appears.</p>
 </h4> 
 
 <h2>What's the differences between levels?</h2>
