@@ -13,7 +13,7 @@ class Boomerang
   end
 
   def self.second_step game
-    if is_possible? game 
+    if (game[1][1] != 1) && (is_possible? game) 
       game[1][1] = 0 
       return true
     end

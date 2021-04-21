@@ -1,10 +1,10 @@
 class MediumDefense
-  def self.avoid_first_level_traps game
+  def self.avoid_basic_traps game
     return true if avoid_lateral_traps game    
     return true if avoid_central_traps game
+    return false
   end
   
-  private
   def self.avoid_lateral_traps game
     if game[1][1] == "*"
       game[1][1] = 0 

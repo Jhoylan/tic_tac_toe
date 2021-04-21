@@ -1,6 +1,7 @@
 class AdvancedDefence
-  def self.avoid_second_level_traps game
+  def self.avoid_advanced_traps game
     return true if avoid_conner_trap game
+    return false
   end
 
   def self.avoid_conner_trap game
@@ -13,13 +14,17 @@ class AdvancedDefence
       case safe_position
       when 0 
         game[0][1] = 0
-      when 0 
+      when 1
         game[2][1] = 0
-      when 0 
+      when 2 
         game[1][0] = 0
-      when 0 
+      when 3 
         game[1][2] = 0
       end
+
+      return true
     end
+
+    return false
   end
 end

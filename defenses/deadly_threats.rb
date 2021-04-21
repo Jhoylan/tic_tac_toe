@@ -3,6 +3,7 @@ class BasicDefense
     return true if avoid_horizontal_deadly_threat game
     return true if avoid_vertical_deadly_threat game
     return true if avoid_diagonal_deadly_threat game
+    return false
   end
 
   private 

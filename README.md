@@ -17,7 +17,7 @@
 <ol>
   <li>Joe doesn't know how to play, he just mark on random places</li>
   <li>Now, he's able to set up a fatality, i.e., a move that will finish the game</li>
-  <li>Once the fality is set up, now Joe is able to give the fatality and finish the game</li>
+  <li>Once the fatality is set up, now Joe is able to give the fatality and finish the game</li>
   <li>In this level Joe can set up a attack that has 50% chance of work, be careful</li>
   <li>You cannot win so easily now, Joe is able to defend deadly traps</li>
   <li>It's becoming more and more difficult, now Joe can make advanced attacks, you're gonna lose if you don't know how to defend yourself</li>

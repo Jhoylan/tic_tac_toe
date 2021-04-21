@@ -40,7 +40,7 @@ class GodLevelConner
 
     machine_row = 2 if game[2][2] == 0
 
-    return true if !other_conners_are_empty? machine_row, machine_column, game
+    return true if is_possible? && (!other_conners_are_empty? machine_row, machine_column, game)
     return false
   end
 

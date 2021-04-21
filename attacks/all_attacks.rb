@@ -1,0 +1,8 @@
+require './attacks/boomerang.rb'
+require './attacks/conner.rb'
+require './attacks/fatality.rb'
+require './attacks/god_level_conner.rb'
+require './attacks/set_advanced_attacks.rb'
+require './attacks/set_fatality.rb'
+require './attacks/v.rb'
+require './attacks/fifty.rb'

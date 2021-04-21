@@ -1,27 +1,18 @@
-require './defenses/advanced_traps.rb'
+require './attacks/all_attacks.rb'
 
 class Level4
   def self.machine_turn game, turn
-    puts "Machine level 3 plays"
+    puts "Joe level 4 plays"
 
-    if turn == 1
-      return if MediumDefense.avoid_first_level_traps game
-    end
+    return if turn == 0 && (Fifty.set game) 
+    return if turn == 2 && (Fifty.first_step game) 
 
-    if turn == 3
-      return if AdvancedDefence.avoid_second_level_traps game
-    end
+    return if Fatality.execute game
 
-    return if BasicDefense.avoid_deadly_threat game
+    return if turn == 4 && (Fifty.second_step game) 
+        
+    return if BasicAtack.set_fatality game
 
-    is_a_valid_play = false
-
-    while !is_a_valid_play do
-      row = rand(0..2)
-      column = rand(0..2)
-      is_a_valid_play = CheckingIf.is_empty? game, row, column
-    end
-
-    game[row][column] = 0
+    Random.play game
   end 
 end

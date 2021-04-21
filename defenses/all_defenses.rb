@@ -1,2 +1,3 @@
-require './defenses.deadly_threats.rb'
-require './defenses.medium_traps.rb'
+require './defenses/deadly_threats.rb'
+require './defenses/basic_traps.rb'
+require './defenses/advanced_traps.rb'

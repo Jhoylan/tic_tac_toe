@@ -1,6 +1,7 @@
 class Fifty
   def self.set game
     game[1][1] = 0
+    return true
   end
 
   def self.first_step game
@@ -13,15 +14,19 @@ class Fifty
   end 
 
   def self.second_step game
-    if is_possible? game
+    if (is_possible? game) && (is_second_step_possible? game)
       mark_second_step game
       return true
     end
-
     return false
   end
 
   private
+  def self.is_second_step_possible? game
+    return true if game[0][0] == 0 || game[2][0] == 0 || game[2][2] == 0 || game[0][2] == 0 
+    return false
+  end
+
   def self.is_possible? game
     return true if game[0][1] == 1 || game[1][0] == 1 || game[1][2] == 1 || game[2][1] == 1 
   end

@@ -1,8 +1,9 @@
-class MediumAttack
+class BasicAtack
   def self.set_fatality game
     return true if set_horizontal_fatality game
     return true if set_vertical_fatality game
     return true if set_diagonal_fatality game
+    return false
   end
 
   private
@@ -75,9 +76,9 @@ class MediumAttack
   end
 
   def self.set_secundary_diagonal_fatality game
-    main_diagonal_elements = [game[2][0], game[1][1], game[0][2]]
+    secundary_diagonal_elements = [game[2][0], game[1][1], game[0][2]]
 
-    if (main_diagonal_elements.count 0) == 1 && (main_diagonal_elements.count 1) == 0
+    if (secundary_diagonal_elements.count 0) == 1 && (secundary_diagonal_elements.count 1) == 0
       while true
         position = rand(3)
 
@@ -99,6 +100,8 @@ class MediumAttack
           end
         end
       end
+
+      return true
     end
 
     return false

@@ -1,8 +1,9 @@
-class BasicAtack
-  def self.fatality game
+class Fatality
+  def self.execute game
     return true if horizontal_fatality game
     return true if vertical_fatality game
     return true if diagonal_fatality game
+    return false
   end
 
   private

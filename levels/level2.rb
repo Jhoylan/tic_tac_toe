@@ -1,19 +1,11 @@
-require './defenses/deadly_threats.rb'
+require './attacks/set_fatality.rb'
 
 class Level2
-  def self.machine_turn game, *turn
-    puts "Machine play"
+  def self.machine_turn game
+    puts "Joe level 2 plays"
 
-    return if BasicDefense.avoid_deadly_threat game
+    return if BasicAtack.set_fatality game
 
-    is_a_valid_play = false
-
-    while !is_a_valid_play do
-      row = rand(0..2)
-      column = rand(0..2)
-      is_a_valid_play = CheckingIf.is_empty? game, row, column
-    end
-
-    game[row][column] = 0
+    Random.play game
   end 
 end
